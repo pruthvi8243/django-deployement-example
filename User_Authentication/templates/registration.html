@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatble" content="ie=edge">
+	<title>Registration</title>
+</head>
+<body bgcolor="lightyellow">
+	{% block body_block %}
+    
+    {% if registered %}
+        <h1>Thank You Registering</h1>
+    {% else %}
+        <h1>Register Here!</h1>
+        <h3>Please Fill out below form</h3>
+
+        <form enctype="multipart/form-data" method = "POST">
+        
+            {% csrf_token %}
+            {{ user_form.as_p}}
+            {{ profile_form.as_p}}
+            <input type="submit" name="" value="Register">
+    {% endif %}
+        
+        </form>
+
+
+	{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatble" content="ie=edge">
+	<title>base Page</title>
+</head>
+<body bgcolor="lightyellow">
+    <nav class='navbar navbar-default navbar-static-top'>
+        <div class="container">
+            <li><a class='navbar-brand' href="{% url 'index' %}">DJANGO</a></li>
+            <li><a class='navbar-link' href="{% url 'admin:index' %}">Admin</a></li>
+            <li><a class='navbar-link' href="{% url 'accounts:register' %}">Register</a></li>
+
+            {% if user.is_authenticated %}
+            <li>Hello..{{user.username}}</li>
+            <li><a class='navbar-link' href="{% url 'logout' %}">Logout</a></li>
+            
+
+            {% else %}
+            <li><a class='navbar-link' href="{% url 'accounts:user_login' %}">Login</a></li>
+            {% endif %}
+
+        </div>
+    </nav>
+    <div class="container"
+	    {% block body_block %}
+	
+	    {% endblock %}
+
+</body>
+</html>
